@@ -10,7 +10,7 @@ phases:
       - mvn clean package
       - echo Building the Docker image...
       - docker build -t my-java-app .
-      - docker tag my-java-app 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
+      - docker tag my-java-app 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app:latest
   post_build:
     commands:
       - echo Pushing the Docker image...
@@ -18,4 +18,5 @@ phases:
       - echo Writing Kubernetes deployment files...
       - kubectl apply -f k8s/deployment.yaml
       - kubectl apply -f k8s/service.yaml
+
 
