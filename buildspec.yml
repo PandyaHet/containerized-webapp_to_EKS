@@ -14,9 +14,10 @@ phases:
   post_build:
     commands:
       - echo Pushing the Docker image...
-      - docker push 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
+      - docker push 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app:latest
       - echo Writing Kubernetes deployment files...
       - kubectl apply -f k8s/deployment.yaml
       - kubectl apply -f k8s/service.yaml
+
 
 
