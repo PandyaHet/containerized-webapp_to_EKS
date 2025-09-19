@@ -6,6 +6,8 @@ phases:
       - aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app
   build:
     commands:
+      - echo Building Java app...
+      - mvn clean package
       - echo Building the Docker image...
       - docker build -t my-java-app .
       - docker tag my-java-app 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
@@ -15,5 +17,5 @@ phases:
       - docker push 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
       - echo Writing Kubernetes deployment files...
       - kubectl apply -f k8s/deployment.yaml
-
       - kubectl apply -f k8s/service.yaml
+
