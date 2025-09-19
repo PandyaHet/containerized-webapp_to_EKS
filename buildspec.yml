@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password | docker login --username AWS --password-stdin 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t my-java-app .
+      - docker tag my-java-app 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
+  post_build:
+    commands:
+      - echo Pushing the Docker image...
+      - docker push 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app/my-java-app
+      - echo Writing Kubernetes deployment files...
+      - kubectl apply -f k8s/deployment.yaml
+      - kubectl apply -f k8s/service.yaml
