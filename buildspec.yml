@@ -18,10 +18,10 @@ phases:
       - echo Setting up kubeconfig...
       - aws eks update-kubeconfig --region us-east-2 --name eks-cluster-1
       - kubectl config view
-      - kubectl get nodes
       - echo Writing Kubernetes deployment files...
       - kubectl apply -f k8s/deployment.yaml
       - kubectl apply -f k8s/service.yaml
+
 
 
 
