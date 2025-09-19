@@ -15,9 +15,14 @@ phases:
     commands:
       - echo Pushing the Docker image...
       - docker push 539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app:latest
+      - echo Setting up kubeconfig...
+      - aws eks update-kubeconfig --region us-east-2 --name eks-cluster-1
+      - kubectl config view
+      - kubectl get nodes
       - echo Writing Kubernetes deployment files...
       - kubectl apply -f k8s/deployment.yaml
       - kubectl apply -f k8s/service.yaml
+
 
 
 
