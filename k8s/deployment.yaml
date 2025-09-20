@@ -13,8 +13,9 @@ spec:
         app: static_app
     spec:
       containers:
-        - name: static-webapp
+        - name: static_app
           image: <image-uri>
           ports:
             - containerPort: 8080
+
 
