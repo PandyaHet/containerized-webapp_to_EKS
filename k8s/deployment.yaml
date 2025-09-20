@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: static-webapp
-          image: het136/static_app
+          image: <image-uri>
           ports:
             - containerPort: 8080
+
