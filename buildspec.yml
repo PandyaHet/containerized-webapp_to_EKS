@@ -19,11 +19,11 @@ phases:
       - sed -i "s|<image-uri>|539247447785.dkr.ecr.us-east-2.amazonaws.com/application/java-app:latest|g" k8s/deployment.yaml
 
   artifacts:
-  files:
-    - k8s/deployment.yaml
-    - k8s/service.yaml
-    - Dockerfile
-    - target/*.jar
+    files:
+      - k8s/deployment.yaml
+      - k8s/service.yaml
+      - Dockerfile
+      - target/*.jar
 
       #- echo Setting up kubeconfig...
       #- aws eks update-kubeconfig --region us-east-2 --name eks-cluster-1
@@ -33,6 +33,7 @@ phases:
       #- echo Writing Kubernetes deployment files...
       #- kubectl apply -f k8s/deployment.yaml
       #- kubectl apply -f k8s/service.yaml
+
 
 
 
